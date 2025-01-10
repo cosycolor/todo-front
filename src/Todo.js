@@ -5,7 +5,7 @@ const Todo = (props) =>{
   const [item, setItem] = useState(props.item);
   return (
     <ListItem>
-      <Checkbox checkedId = {item.done}/>
+      <Checkbox checked = {item.done}/>
       <ListItemText>
         <InputBase
           inputProps = { {"aria-label" : "naked"}}

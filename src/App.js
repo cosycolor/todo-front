@@ -1,26 +1,19 @@
 import './App.css';
 import Todo from './Todo';
 import React, {useState} from "react";
-import { List, Paper } from "@mui/material";
+import { Container, List, Paper } from "@mui/material";
+import AddTodo from "./AddTodo.js";
 
 
 function App() {
-  const [items, setItem] = useState([
-    {
-      id : "0",
-      title : "Hello World",
-      done : true
-    },
-    {
-      id : "1",
-      title : "Goodbye World",
-      done : false
-    },
-    {
-      id : "2",
-      title : "Good afternoon",
-      done : true
-    }]);
+  const [items, setItems] = useState([]);
+
+    const addItem = (item) => {
+      item.id = "ID-" + items.length;
+      item.done = false;
+      setItems([...items, item]);
+      console.log("items", items);
+    }
 
     let todoItems = 
       items.length > 0 && (
@@ -34,7 +27,11 @@ function App() {
         );
   return (
     <div className="App">
-      {todoItems}
+      <Container maxWidth="md">
+        <AddTodo addItem={addItem}/>
+        <div className="TodoList">{todoItems}</div>
+      </Container>
+      
     </div>
   );
 }
