@@ -8,6 +8,11 @@ const Todo = (props) =>{
   const deleteItem = props.deleteItem;
   const editItem = props.editItem;
 
+  const checkboxEventHandler = (e) =>{
+    item.done = e.target.checked;
+    editItem();
+  }
+
   const editEventHandler = (e) => {
     item.title = e.target.value;
     editItem();
@@ -29,7 +34,7 @@ const Todo = (props) =>{
 
   return (
     <ListItem>
-      <Checkbox checked = {item.done}/>
+      <Checkbox checked = {item.done} onChange = {checkboxEventHandler}/>
       <ListItemText>
         <InputBase
           inputProps = { {"aria-label" : "naked", readOnly : readOnly}}
